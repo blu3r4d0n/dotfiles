@@ -20,6 +20,7 @@ alert = #bd2c40
 gray = #585858
 blue = #0f39a7
 ;clear = #00000000
+red = ${xrdb:color1}
 [bar/example]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
@@ -58,7 +59,7 @@ modules-left = bswpm i3
 ;modules-center = padding mpd padding
 ;modules-right = filesystem padding xbacklight padding volume padding xkeyboard padding memory padding cpu padding weather padding wlan padding eth battery padding temperature padding date powermenui
 modules-center = mpd 
-modules-right = filesystem xbacklight volume xkeyboard memory cpu weather wlan eth battery temperature date powermenu
+modules-right = filesystem xbacklight volume xkeyboard memory cpu weather ip wlan eth battery temperature date powermenu
 
 
 tray-position = right
@@ -85,6 +86,13 @@ label = %title:0:30:...%
 type = custom/text
 content = " "
 
+[module/ip]
+type = custom/script
+interval = 1200
+format = <label>
+format-underline = ${colors.red}
+label = "%output:0:30%"
+exec = ~/.config/polybar/ip.bash
 
 [module/xkeyboard]
 type = internal/xkeyboard
