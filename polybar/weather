@@ -3,7 +3,7 @@
 
 import requests
 
-CITY = "4406041"
+CITY = "4593142"
 API_KEY = "d0215109c38c5f135bddfc0c7dbb8abe"
 UNITS = "Imperial"
 UNIT_KEY = "F"
