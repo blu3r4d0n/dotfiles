@@ -79,12 +79,11 @@ bindsym Mod1+Return exec --no-startup-id gnome-terminal
 bindsym Mod1+q kill
 
 # start rofi (a program launcher)
-bindsym Mod1+d exec "rofi -show window"
+bindsym Mod1+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu'
 bindsym Mod1+Tab exec "rofi -show run"
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-# bindsym Mod1+d exec --no-startup-id i3-dmenu-desktop
 
 #Shutdown script
 set $Locker "xscreensaver-command -lock" && sleep
