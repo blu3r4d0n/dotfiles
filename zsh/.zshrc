@@ -82,12 +82,13 @@ export GOPATH=~/.slackterm
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
+alias ship="/usr/local/bin/ship.sh"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # Import colorscheme from 'wal'
 # &   # Run the process in the background.
 # ( ) # Hide shell job control messages.
-(wal -r &)
+(cat /home/philip/.cache/wal/sequences)
 #wal -R
 export PATH=.:$PATH
 
