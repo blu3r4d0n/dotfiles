@@ -11,6 +11,7 @@ URxvt.italicfont:xft:Lemon:italic:pixelsize=10
 URxvt.bolditalicFont:xft:Lemon:bold:italic:pixelsize=10
 URxvt*letterSpace: 1
 URxvt*allow_bold: true
+URxvt.background:	[1]#000000
 ! URXVT FONT SETTINGS
 !------------------------------------------------
 Xft.autohint: true

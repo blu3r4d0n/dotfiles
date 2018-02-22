@@ -51,10 +51,11 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
+#set -o vi
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -83,14 +84,34 @@ export GOPATH=~/.slackterm
 #
 # Example aliases
 alias ship="/usr/local/bin/ship.sh"
+function countdown(){
+   date1=$((`date +%s` + $1)); 
+   while [ "$date1" -ge `date +%s` ]; do 
+     echo -ne "$(date -u --date @$(($date1 - `date +%s`)) +%H:%M:%S)\r";
+     sleep 0.1
+   done
+}
+function stopwatch(){
+  date1=`date +%s`; 
+   while true; do 
+    echo -ne "$(date -u --date @$((`date +%s` - $date1)) +%H:%M:%S)\r"; 
+    sleep 0.1
+   done
+}
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # Import colorscheme from 'wal'
 # &   # Run the process in the background.
 # ( ) # Hide shell job control messages.
-(cat /home/philip/.cache/wal/sequences)
+#(cat /home/philip/.cache/wal/sequences)
 #wal -R
 export PATH=.:$PATH
-
+export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.vim/bundle/vim-live-latex-preview/bin:$PATH"
+export PATH="/home/philip/.vim/bundle/vim-live-latex-preview/bin:$PATH" 
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
