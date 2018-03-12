@@ -239,10 +239,8 @@ bindsym Mod4+Left exec mpc prev
 bindsym Mod4+ctrl+Right exec mpc seek +5
 bindsym Mod4+ctrl+Left exec mpc seek -5
 # Sreen brightness controls
-#bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-#bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
-bindsym XF86MonBrightnessUp exec light -A 20
-bindsym XF86MonBrightnessDown exec light -U 20
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 bindsym Mod4+F12 exec --no-startup-id amixer -c 1 sset 'Master' 5%+
 bindsym Mod4+F11 exec --no-startup-id amixer -c 1 sset 'Master' 5%-
 bindsym Mod4+F10 exec --no-startup-id amixer sset 'Master' toggle
