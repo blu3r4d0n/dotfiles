@@ -7,7 +7,8 @@
 ;=====================================================
 
 [colors]
-background = #00000000
+;background = #00000000
+background = ${xrdb:background}
 ;background = #222
 background-alt = #444
 foreground = ${xrdb:foreground}
@@ -22,6 +23,7 @@ blue = #0f39a7
 red = ${xrdb:color1}
 [bar/example]
 monitor = ${env:MONITOR:eDP-1}
+display = ${env:MONITOR:DP-1}
 width = 100%
 height = 24
 ;offset-x = 1%
@@ -29,6 +31,11 @@ height = 24
 ;radius = 6.0
 fixed-center = false
 
+;background-0 = #003c3b37
+;background-1 = #ff3c3b37
+;background-2 = #003c3b37
+;background-3 = #003c3b37
+;background-4 = #003c3b37
 background = ${colors.background}
 ;background = ${colors.clear}
 foreground = ${colors.foreground}
@@ -56,9 +63,9 @@ font-2 = TakaoGothic:weight=bold:size=10;0
 
 modules-left = i3 mpd
 ;modules-center = padding mpd padding
-;modules-right = filesystem padding backlight padding volume padding xkeyboard padding cpu padding weather padding wlan padding eth battery padding temperature padding date 
+;modules-right = filesystem padding xbacklight padding volume padding xkeyboard padding cpu padding weather padding wlan padding eth battery padding temperature padding date 
 ;modules-center = mpd 
-modules-right = filesystem backlight volume memory cpu weather ip wlan eth mail battery temperature date 
+modules-right = filesystem xbacklight volume memory cpu weather ip wlan eth battery temperature date 
 
 tray-position = right
 tray-padding = 2
@@ -163,7 +170,7 @@ label-unfocused-padding = ${module/bspwm.label-occupied-padding}
 ; visible = Active workspace on unfocused monitor
 label-visible = %index%
 label-visible-background = ${self.label-focused-background}
-label-vi1sible-underline = ${self.label-focused-underline}
+label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
@@ -172,10 +179,7 @@ label-urgent-background = ${module/bspwm.label-urgent-background}
 label-urgent-padding = ${module/bspwm.label-urgent-padding}
 
 
-[module/mail]
-type = custom/script
-exec = ~/.config/polybar/inbox-imap-python.py
-interval = 30
+
 
 [module/mpd]
 type = internal/mpd
@@ -211,31 +215,8 @@ bar-progress-indicator = ╼
 bar-progress-fill = ─
 bar-progress-empty = " "
 
-[module/backlight]
-type = internal/backlight
-
-; Use the following command to list available cards:
-; $ ls -1 /sys/class/backlight/
-card = intel_backlight
-; Available tags:
-;   <label> (default)
-;   <ramp>
-;   <bar>
-format = <ramp>
-
-; Available tokens:
-;   %percentage% (default)
-label = %percentage%%
-
-; Only applies if <ramp> is used
-ramp-0 = 🌕
-ramp-1 = 🌔
-ramp-2 = 🌓
-ramp-3 = 🌒
-ramp-4 = 🌑
-
 [module/xbacklight]
-type = internal/backlight
+type = internal/xbacklight
 
 format = <label> <bar>
 label = BL
@@ -253,7 +234,7 @@ bar-empty-font = 2
 bar-empty-foreground = ${colors.foreground-alt}
 
 [module/backlight-acpi]
-inherit = module/backlight
+inherit = module/xbacklight
 type = internal/backlight
 card = intel_backlight
 
