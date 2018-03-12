@@ -76,13 +76,12 @@ floating_modifier Mod1
 
 # start a terminal
 bindsym Mod1+Return exec --no-startup-id gnome-terminal
-
 # kill focused window
 bindsym Mod1+q kill
 
 # start rofi (a program launcher)
 bindsym Mod1+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu'
-bindsym Mod1+Tab exec "rofi -show run"
+bindsym Mod1+Tab exec "rofi -fake-transparency -show run"
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -141,7 +140,7 @@ bindsym $mod+apostrophe split h
 bindsym Mod1+Shift+backslash split h 
 # split in vertical orientation
 bindsym $mod+slash split v
-bindsym Mod1+Shift+backslash split h 
+bindsym Mod1+minus split  v
 bindsym $mod+t split toggle
 
 # enter fullscreen mode for the focused container
@@ -232,7 +231,7 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #i
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 # MPD Play/Pause
-bindsym XF86AudioPlay exec mpc_toggle
+bindsym XF86AudioPlay exec --no-startup-id mpc_toggle
 # MPD forward/back
 bindsym Mod4+Right exec mpc next
 bindsym Mod4+Left exec mpc prev
@@ -251,7 +250,9 @@ bindsym Mod4+t exec --no-startup-id thunderbird
 bindsym Mod1+shift+g exec --no-startup-id geany
 bindsym Mod1+shift+a exec --no-startup-id audacious
 bindsym Mod1+shift+n exec --no-startup-id gnome-terminal -x ncmpcpp
-bindsym Mod1+shift+w exec --no-startup-id gnome-terminal =x ssh nelsonp8@hopper.winthrop.edu
+bindsym Mod1+shift+w exec --no-startup-id gnome-terminal -x ssh nelsonp8@hopper.winthrop.edu
+bindsym $mod+shift+m exec  offlineimap
+bindsym $mod+m exec offlineimap -u quiet && gnome-terminal -x mutt && offlineimap
 bindsym Mod4+shift+t exec --no-startup-id gnome-terminal -x rainbowstream
 bindsym Mod1+shift+v exec --no-startup-id vlc
 bindsym Mod4+s exec --no-startup-id spotify --ui.track_notifications_enabled=false
@@ -298,7 +299,7 @@ bindsym $mod+Delete		exec $stoprec
 bindsym mod4+shift+c exec gnome-terminal --title "calculator" -x R
 #wal
 exec --no-startup-id wal -R
-exec --no-startup-id wal -t -i ~/.wallpaper/wallpaper.jpg
+exec --no-startup-id wal -t -i ~/.wallpaper/city.png
 exec source ~/.zshrc
 
 for_window [title="video0 - mpv"] floating enable
@@ -315,8 +316,8 @@ bindsym $mod+Shift+o		resize grow width 10 px or 10 ppt
 ### Exec ###
 exec --no-startup-id xscreensaver -nosplash
 exec --no-startup-id nm-applet
-exec --no-startup-id compton -bG --config ~/.config/compton.conf
+#exec --no-startup-id compton --config ~/.config/compton2.conf
 #exec --no-startup-id gnome-terminal -x source ~/.zshrc && tty-clock -tc
-exec --no-startup-id compton --config ~/.config/compton/compton.conf
+exec --no-startup-id compton 
 exec --no-startup-id mpc update
 exec --no-startup-id ~/dotfiles/polybar/launch.sh

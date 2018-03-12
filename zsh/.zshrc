@@ -51,7 +51,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting)
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -83,7 +83,7 @@ export GOPATH=~/.slackterm
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias ship="/usr/local/bin/ship.sh"
+#alias ship="sudo /usr/local/bin/ship.sh"
 function countdown(){
    date1=$((`date +%s` + $1)); 
    while [ "$date1" -ge `date +%s` ]; do 
@@ -100,6 +100,7 @@ function stopwatch(){
 }
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+#alias ship="/usr/local/bin/ship.sh"
 # Import colorscheme from 'wal'
 # &   # Run the process in the background.
 # ( ) # Hide shell job control messages.
@@ -109,7 +110,8 @@ export PATH=.:$PATH
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.vim/bundle/vim-live-latex-preview/bin:$PATH"
 export PATH="/home/philip/.vim/bundle/vim-live-latex-preview/bin:$PATH" 
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+export PATH="/usr/local/bin/:$PATH"
+setopt histignorespace
 
 
 
