@@ -8,15 +8,19 @@
 
 [colors]
 ;background = #00000000
-background = ${xrdb:background}
+background = ${xrdb:color0}
 ;background = #222
-background-alt = #444
-foreground = ${xrdb:foreground}
+;background-alt = #444
+foreground = ${xrdb:color7}
 ;foreground = #dfdfdf
-foreground-alt = #555
-primary = #ffb52a
-secondary = #e60053
-alert = #bd2c40
+;foreground-alt = #555
+foreground-alt = ${xrdb:color7:#222}
+primary = ${xrdb:color1:#222}
+secondary = ${xrdb:color2:#222}
+alert = ${xrdb:color3:#222}
+;primary = #ffb52a
+;secondary = #e60053
+;alert = #bd2c40
 gray = #585858
 blue = #0f39a7
 ;clear = #00000000
