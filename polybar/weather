@@ -1,7 +1,14 @@
-#!/usr//bin/python3.5
+#!/usr/bin/python3.6
 # -*- coding: utf-8 -*-
 
 import requests
+
+
+
+
+#lat=
+#WESTMINSTER = 104.48.45.140
+#ROCK HILL = 4593142
 
 CITY = "4593142"
 API_KEY = "d0215109c38c5f135bddfc0c7dbb8abe"
