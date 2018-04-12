@@ -19,14 +19,14 @@ ZSH_THEME="agnoster"
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
 
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+# Uncomment the following line to change how often to auto-wupdate (in days).
+# export UPDATE_ZSH_DAYS=1
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+ export DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
@@ -51,7 +51,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -84,6 +84,9 @@ export GOPATH=~/.slackterm
 #
 # Example aliases
 #alias ship="sudo /usr/local/bin/ship.sh"
+alias mutt="neomutt"
+alias vi="vim"
+alias emacs="emacs -nw"
 function countdown(){
    date1=$((`date +%s` + $1)); 
    while [ "$date1" -ge `date +%s` ]; do 
@@ -98,13 +101,16 @@ function stopwatch(){
     sleep 0.1
    done
 }
+funtion calculator(){
+	echo  "\033]0;SOME TITLE HERE\007"
+}
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #alias ship="/usr/local/bin/ship.sh"
 # Import colorscheme from 'wal'
 # &   # Run the process in the background.
 # ( ) # Hide shell job control messages.
-#(cat /home/philip/.cache/wal/sequences)
+(cat /home/philip/.cache/wal/sequences)
 #wal -R
 export PATH=.:$PATH
 export PATH="$HOME/bin:$PATH"
@@ -112,7 +118,9 @@ export PATH="$HOME/.vim/bundle/vim-live-latex-preview/bin:$PATH"
 export PATH="/home/philip/.vim/bundle/vim-live-latex-preview/bin:$PATH" 
 export PATH="/usr/local/bin/:$PATH"
 setopt histignorespace
-
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+        source /etc/profile.d/vte.sh
+fi
 
 
 
