@@ -5,7 +5,7 @@ IRC*iconFile: /usr/share/icons/Faenza/apps/32/xchat.png
 URxvt.geometry: 80x22
 ! URXVT FONTS
 !------------------------------------------------
-URxvt.font:xft:Droid Sans Mono for Powerline:pixelsize=10
+URxvt.font:xft:Hack:pixelsize=10
 URxvt.boldFont:xft:Lemon:bold:pixelsize=10
 URxvt.italicfont:xft:Lemon:italic:pixelsize=10
 URxvt.bolditalicFont:xft:Lemon:bold:italic:pixelsize=10
@@ -23,7 +23,7 @@ Xft.lcdfilter: lcddefault
 ! URXVT ENABLE LINK SUPPORT
 !------------------------------------------------
 URxvt.perl-lib: /home/luca/Documenti/perl/
-URxvt.perl-ext-common: default,matcher,clipboard
+URxvt.perl-ext-common: default,matcher,clipboard,font-size
 !tabbed
 URxvt.matcher.button: 1
 URxvt.perl-ext: default
@@ -110,13 +110,14 @@ rofi.color-normal: #000000, #00cbff, #202020, #00789e, #eee8d5
 rofi.color-active: #000000, #ffa500, #202020, #966100, #fdf6e3
 rofi.color-urgent: #000000, #dc322f, #202020, #dc322f, #fdf6e3
 rofi.fake-transparency: true
-rofi.lines: 		3
+rofi.lines: 		5
+rofi.width:		30
 !rofi.modi: window,run,ssh,drun,combi
 rofi.modi: combi,run
 rofi.show: combi,run
 rofi.combi-modi:window,drun
-rofi.font: Terminess Powerline 9
-
+rofi.font: Cabin 15
+rofi.hide-scrollbar:	true
 !------------------------------------------------------------------------------
 !xscreensaver
 !------------------------------------------------------------------------------
@@ -155,4 +156,5 @@ xscreensaver.passwd.thermometer.width:       8
 !datestamp format--see the strftime(3) manual page for details
 xscreensaver.dateFormat:    %I:%M%P %a %b %d, %Y
 Xcursor.theme: DMZ-Black
- 
+URxvt.keysym.C-equal:   font-size:increase
+URxvt.keysym.C-minus:   font-size:decrease 
