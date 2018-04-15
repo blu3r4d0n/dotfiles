@@ -323,3 +323,4 @@ exec --no-startup-id mpc update
 exec --no-startup-id ~/dotfiles/polybar/launch.sh
 exec --no-startup-id i3 restart
 exec --no-startup-id mpd && mpc update
+exec --no-startup-id dunst

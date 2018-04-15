@@ -110,7 +110,7 @@ funtion calculator(){
 # Import colorscheme from 'wal'
 # &   # Run the process in the background.
 # ( ) # Hide shell job control messages.
-(cat /home/philip/.cache/wal/sequences)
+#(cat /home/philip/.cache/wal/sequences)
 #wal -R
 export PATH=.:$PATH
 export PATH="$HOME/bin:$PATH"
