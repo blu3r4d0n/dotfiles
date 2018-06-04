@@ -1,4 +1,4 @@
-	# i3 config file (v4)
+# i3 config file (v4)
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 #
@@ -81,7 +81,7 @@ bindsym Mod1+q kill
 
 # start rofi (a program launcher)
 bindsym Mod1+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu'
-bindsym Mod1+Tab exec --no-startup-id "rofi -fake-transparency -show run"
+bindsym Mod1+Tab exec "rofi -fake-transparency -show run"
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -93,7 +93,7 @@ set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) re
 mode "$mode_system" {
     bindsym l exec --no-startup-id "xscreensaver-command -lock", mode "default"
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
-    bindsym s exec --no-startup-id systemctl suspend, mode "default"
+    bindsym s exec --nostartup-id systemctl suspend, mode "default"
     bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
     bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
@@ -231,17 +231,16 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #i
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 # MPD Play/Pause
-bindsym XF86AudioPlay exec --no-startup-id mpc toggle
+bindsym XF86AudioPlay exec --no-startup-id mpc_toggle
 # MPD forward/back
-bindsym Mod4+Right exec --no-startup-id mpc next
-
-bindsym Mod4+Left exec --no-startup-id mpc prev
+bindsym Mod4+Right exec mpc next
+bindsym Mod4+Left exec mpc prev
 # MPD seek/rewind
-bindsym Mod4+ctrl+Right exec --no-startup-id mpc seek +5
-bindsym Mod4+ctrl+Left exec --no-startup-id mpc seek -5
+bindsym Mod4+ctrl+Right exec mpc seek +5
+bindsym Mod4+ctrl+Left exec mpc seek -5
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 20 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 bindsym Mod4+F12 exec --no-startup-id amixer -c 1 sset 'Master' 5%+
 bindsym Mod4+F11 exec --no-startup-id amixer -c 1 sset 'Master' 5%-
 bindsym Mod4+F10 exec --no-startup-id amixer sset 'Master' toggle
@@ -250,8 +249,8 @@ bindsym Mod1+shift+g exec --no-startup-id geany
 bindsym Mod1+shift+a exec --no-startup-id audacious
 bindsym Mod1+shift+n exec --no-startup-id gnome-terminal -x ncmpcpp
 bindsym Mod1+shift+w exec --no-startup-id gnome-terminal -x ssh nelsonp8@hopper.winthrop.edu
-bindsym $mod+shift+m exec  --no-startup-id offlineimap
-bindsym $mod+m exec --no-startup-id gnome-terminal -x neomutt && offlineimap -u quiet
+bindsym $mod+shift+m exec  offlineimap
+bindsym $mod+m exec offlineimap -u quiet && gnome-terminal -x mutt && offlineimap
 bindsym Mod4+shift+t exec --no-startup-id gnome-terminal -x rainbowstream
 bindsym Mod1+shift+v exec --no-startup-id vlc
 bindsym Mod4+s exec --no-startup-id spotify --ui.track_notifications_enabled=false
@@ -269,8 +268,9 @@ assign [class="URxvt" instance="ncmpcpp"] $ws3
 assign [class="gnome-terminal" instance="tty-clock"] $ws1
 assign [class="URxvt" instance="mcabber"] $ws2
 bindsym Print exec --no-startup-id scrot '%Y-%m-%d-%T_$wx$h.png' -e 'mv $f ~/shots/'
-bindsym mod4 + n exec --no-startup-id google-chrome-stable -app=https://www.netflix.com
+bindsym mod4 + n exec --no-startup-id ~/bin/netflix
 bindsym mod4 + q exec --no-startup-id qutebrowser
+#[class="google-chrome"] fullscreen enable
 ### floating windows ###
 for_window [class="Steam"] floating enable
 for_window [class="Gimp"] floating enable
@@ -294,18 +294,15 @@ bindsym $mod+Insert		exec $screencast
 bindsym $mod+Shift+Delete		exec $video
 bindsym $mod+Delete		exec $stoprec
 #calc
-exec --no-startup-id gnome-terminal --profile=Calculator -e 'sh -c "/home/philip/bin/namechanger; R"'
+bindsym mod4+shift+c exec gnome-terminal --title "calculator" -x R
 #wal
 exec --no-startup-id wal -R
-#exec --no-startup-id wal -t -i ~/.wallpaper/city.png
 exec --no-startup-id source ~/.zshrc
 
 for_window [title="video0 - mpv"] floating enable
-for_window [title="Calculator"] floating enable
-for_window [instance="Calculator"] border pixel 5
-for_window [title="Calculator"] resize set 800 300
-for_window [title="Calculator"] move scratchpad
-for_window [title="Netflix"] fullscreen enable
+for_window [title="calculator"] floating enable
+for_window [instance="calculator"] border pixel 5
+
 for_window [title="video0 - mpv"] sticky enable
 #Resize with yuio
 bindsym $mod+Shift+y		resize shrink width 10 px or 10ppt
@@ -316,11 +313,9 @@ bindsym $mod+Shift+o		resize grow width 10 px or 10 ppt
 ### Exec ###
 exec --no-startup-id xscreensaver -nosplash
 exec --no-startup-id nm-applet
-exec --no-startup-id compton --config ~/.config/compton.conf
+#exec --no-startup-id compton --config ~/.config/compton2.conf
 #exec --no-startup-id gnome-terminal -x source ~/.zshrc && tty-clock -tc
 exec --no-startup-id compton 
 exec --no-startup-id mpc update
-exec --no-startup-id ~/dotfiles/polybar/launch.sh
-exec --no-startup-id i3 restart
-exec --no-startup-id mpd && mpc update
-exec --no-startup-id dunst
+exec --no-startup-id ~/.config/polybar/launch.sh
+exec --no-startup-id xscreensaver -no-splash &
